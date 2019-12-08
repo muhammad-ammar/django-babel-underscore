@@ -11,6 +11,7 @@ env:
   - DJANGO_VERSION=1.9.x
   - DJANGO_VERSION=1.10.x
   - DJANGO_VERSION=1.11.x
+  - DJANGO_VERSION=2.2.x
 install:
   - pip install tox
 script:
@@ -21,3 +22,12 @@ matrix:
      env: DJANGO_VERSION=master
    - python: "pypy"
      env: DJANGO_VERSION=master
+   - python: "2.7"
+     env: DJANGO_VERSION=2.2.x
+   - python: "3.4"
+     env: DJANGO_VERSION=2.2.x
+   - python: "pypy"
+     env: DJANGO_VERSION=2.2.x
+  include:
+   - python: "3.5"
+     env: DJANGO_VERSION=2.2.x
