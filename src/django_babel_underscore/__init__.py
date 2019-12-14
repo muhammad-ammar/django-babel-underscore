@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 import django
 
-if django.VERSION[:2] >= (1, 8):
-    from django.template.base import Lexer, TOKEN_TEXT
+from django.template.base import Lexer
+try:
+    from django.template.base import TokenType
+except ImportError:  # django < 2.1
+    from django.template.base import TOKEN_TEXT
 else:
-    from django.template import Lexer, TOKEN_TEXT
+    TOKEN_TEXT = TokenType.TEXT
 
 from django.utils.encoding import force_text
 from django_babel.extract import extract_django
